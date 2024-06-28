@@ -1,0 +1,12 @@
+.footer {
+    border-top: 1px solid gray;
+    margin-top: 15px;
+}
+
+.footer-title {
+  
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+    padding: 25px 0px;
+}

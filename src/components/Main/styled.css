@@ -1,0 +1,7 @@
+.main {
+    flex: auto 1 1;
+}
+
+.main.no-active {
+    display: none;
+}

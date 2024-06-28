@@ -1,0 +1,131 @@
+.poster-wrapper {
+    position: relative;
+    color: #fff;
+}
+
+.poster  {
+    z-index: -1;
+    height: 682px;
+}
+
+.poster-content {
+    position: absolute;
+    top: 55%;
+    left: 0;
+    z-index: 10;
+    padding-left: 30px;
+}
+
+.poster-content.modified {
+    top: 50%
+}
+
+.title {
+    display: block;
+    font-size: 65px;
+    font-weight: 600;
+    
+    box-sizing: border-box;
+}
+
+.overview {
+    display: inline-block;
+    max-width: 90%;
+    font-size: 16px;
+    line-height: 25px;
+    margin-top: 20px;
+}
+
+.film-info {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.vote_average {
+    display: flex;
+    font-size: 30px;
+    
+}
+
+.vote_average::before {
+    content: url('../../imgs/icon-star.svg');
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+}
+
+
+.release_year {
+    font-size: 30px;
+    margin: 0 20px;
+}
+
+.trailer {
+    background-color: #16191b;
+    border-radius: 5px;
+    color: #fff;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all .2s ease-in;
+}
+
+.trailer:hover {
+    background-color: rgb(68, 77, 83);
+}
+
+.swiper-button-prev::after {
+    content: url('../../imgs/swipe-arrow.png') !important;
+    width: 50px;
+    height: 50px;
+    padding-left: 15px;
+    z-index: 30;
+}
+
+.swiper-button-next::after {
+    content: url('../../imgs/swipe-arrow.png') !important;
+    width: 50px;
+    height: 50px;
+    transform: rotate(180deg);
+    padding-left: 15px;
+    z-index: 30;
+}
+
+@media (max-width: 850px) {
+    .overview {
+        display: none;
+    }
+    .poster-content {
+        top: 65%;
+    }
+    .poster-content.modified {
+        top: 60%
+    }
+    .title {
+        font-size: 55px;
+    }
+    .film-info {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 425px) {
+    .poster-content {
+        justify-content: center;
+    }
+    .title {
+        font-size: 35px;
+        word-wrap: wrap;
+    }
+    .vote_average {
+        display: none;
+    }
+    .release_year {
+        display: none;
+    }
+    .trailer {
+        margin: 0 auto;
+    }
+}

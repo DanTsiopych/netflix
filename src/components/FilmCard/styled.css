@@ -1,0 +1,73 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    transition: 0.15s ease-in;
+    position: relative;
+    max-width: 224px;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+
+.card-title {
+    margin-top: 20px;
+    max-width: 224px;
+}
+
+.card-subtitle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 224px;
+    margin: 8px 0px 20px 0px;
+}
+
+.card-rating {
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.card-rating::before {
+    content: url('../../imgs/icon-star.svg');
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+}
+
+.card-img {
+    max-width: 100%;
+    max-height: 336px;
+    border-radius: 20px;
+}
+
+
+
+.player.active {
+    display: block;
+    position: absolute;
+    z-index: 10;
+    transition: 0.1s ease-in;
+    top: 50%;
+    left: 50%;
+    transform: translate(-40%, -50%);
+   
+}
+
+.player.active:hover {
+    transform: scale(1.1) translate(-35%, -50%);
+}
+
+.player {
+    display: none;
+    
+}
+
+.card-imgs {
+    max-width: 224px;
+    max-height: 336px;
+    position: relative;
+}
+

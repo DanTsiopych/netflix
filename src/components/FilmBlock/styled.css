@@ -1,0 +1,54 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+}
+
+
+
+.pagination-button {
+    background-color: #d6d6d6;
+    border-radius: 5px;
+    color: #000;
+    cursor: pointer;
+    font-size: 20px;
+    list-style-type: none;
+    padding: 5px 6px;
+    margin-right: 10px;
+}
+
+.title-block {
+    border-bottom: 1px solid gray;
+    font-size: 22px;
+    font-weight: 400;
+    margin: 10px 0px;
+    padding: 10px 0;
+}
+
+.films {
+    display: grid;
+    /* grid-template: repeat(4, minmax(150px, 1fr))/ repeat(5, 1fr); */
+    /* grid-template: 4 / repeat(auto-fill, minmax(150px, 1fr)); */
+    grid-template: auto / repeat(5, minmax(150px, 224px));
+    column-gap: 20px;
+}
+
+@media (max-width: 875px) {
+    .films {
+        grid-template: auto / repeat(4, minmax(150px, 224px));
+    }
+}
+
+@media (max-width: 700px) {
+    .films {
+        grid-template: auto / repeat(3, minmax(150px, 224px));
+    }
+}
+
+@media (max-width: 530px) {
+    .films {
+        grid-template: auto / repeat(2, minmax(125px, 224px));
+    }
+}
