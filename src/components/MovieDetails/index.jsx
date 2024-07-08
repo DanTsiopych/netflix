@@ -18,7 +18,7 @@ function MovieDetails() {
     }
   };
 
-  const fetchMovie = (id) =>
+  const fetchMovie = async (id) =>
     fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=737b9c89bea1ebcd53b5cd2a12ee5fe7&append_to_response=videos`, options)
       .then(response => response.json())
       .then(response => {
