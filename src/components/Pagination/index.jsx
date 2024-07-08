@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import  './styled.css';
 
 
-const Pagination = ({setCurrentPage}) => {
+const Pagination = ({currentPage, setCurrentPage}) => {
     
     const pages = [1, 2, 3, 4, 5]
     
@@ -12,7 +12,7 @@ const Pagination = ({setCurrentPage}) => {
                 return (
                     <a href='#'
                         key={index}
-                        className='pagination-button'
+                        className={currentPage === item ? 'pagination-button active' : 'pagination-button'}
                         onClick={(event) => {
                             event.preventDefault();
                             setCurrentPage(item);

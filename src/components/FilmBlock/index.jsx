@@ -3,10 +3,11 @@ import './styled.css'
 import FilmCard from './../FilmCard';
 import Pagination from '../Pagination';
 
-const FilmBlock = ({ title, name }) => {
+
+const FilmBlock = ({ id, title, name }) => {
     const [currentPage, setCurrentPage] = useState(1)
     const [posts, setPosts] = useState([])
-    
+
 
     const options = {
         method: 'GET',
@@ -15,6 +16,7 @@ const FilmBlock = ({ title, name }) => {
             Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MzdiOWM4OWJlYTFlYmNkNTNiNWNkMmExMmVlNWZlNyIsInN1YiI6IjY2NzVjNjM5MTk3Y2I4ZTA5NjViNDVkYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Y0jBpBAxhpocMcAyAu8ZWOfyWPquXk942tb2iwcUn7o'
         }
     };
+
 
 
     useEffect(() => {
@@ -28,32 +30,37 @@ const FilmBlock = ({ title, name }) => {
     }, [currentPage])
 
 
-    
+
 
 
 
     return (
-        <div className='film-block'>
-                <div className='title-block'>
-                    <h4 className='film-title'>{title}</h4>
-                </div>
+        <div className='film-block' id={id} >
+            <div className='title-block'>
+                <h4 className='film-title'>{title}</h4>
+            </div>
+            {posts && posts.length > 0 && (
                 <div className='films'>
-                        {posts.map((item, index) => {
+                    {posts.map((item, index) => {
                         return (
                             <FilmCard
                                 background={item.poster_path}
                                 title={item.title}
                                 vote={item.vote_average}
                                 year={item.release_date}
+                                id={item.id}
                                 key={index}
                             />
                         )
-                    })} 
+                    })}
                 </div>
+            )}
             <Pagination
                 setCurrentPage={setCurrentPage}
-            /> 
+                currentPage={currentPage}
+            />
         </div>
+
     )
 };
 

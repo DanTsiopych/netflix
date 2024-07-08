@@ -14,8 +14,8 @@
     color: red;
 }
 
-@media (max-width: 1250px) {
+@media (max-width: 800px) {
     .nav {
-        display: none;
+       display: none;
     }
 }

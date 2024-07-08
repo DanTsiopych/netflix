@@ -4,6 +4,7 @@
     transition: 0.15s ease-in;
     position: relative;
     max-width: 224px;
+    color: white;
 }
 
 .card:hover {

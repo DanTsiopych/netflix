@@ -1,0 +1,37 @@
+.recommendMovie {
+    position: relative;
+    color: white;
+}
+
+.recommendMovie-poster {
+    max-width: 200px;
+}
+
+.recommendMovie h4 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-align: center;
+    line-height: 25px;
+}
+
+.recommendMovie p {
+    font-size: 14px;
+    text-align: center;
+    line-height: 20px;
+    margin-bottom: 10px;
+}
+
+.recommendMovie-description {
+    display: none;
+    position: absolute;
+    background-color: #2d3337;
+    bottom: 0;
+    padding: 5px;
+    transition: all .2s ease-in;
+    width: 100%;
+}   
+
+.recommendMovie-description.isActive {
+    display: block;
+}

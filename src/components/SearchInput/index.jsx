@@ -1,10 +1,20 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import './styled.css';
 import FilmCard from '.././FilmCard'
+import useDebounce from '../../hooks/useDebounce';
 
-const SearchInput = ({ search }) => {
 
-    const users = [];
+const SearchInput = () => {
+
+    const [inputValue, setInputValue] = useState('')
+    const [movies, setMovies] = useState([])
+
+
+    const debouncedValue = useDebounce(inputValue, 500)
+
+    const changeValue = (event) => {
+        setInputValue(event.target.value);
+    };
 
     const options = {
         method: 'GET',
@@ -14,55 +24,50 @@ const SearchInput = ({ search }) => {
         }
     };
 
-    const [inputValue, setInputValue] = useState('')
-   
-    
-       
-        for (let page = 1; page <= 10; page++) {
-            fetch(`https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}`, options)
-                .then(response => response.json())
-                .then(response => {
-                    console.log(response)
-                    users.push(...response.results);
-                })
-                .catch(err => console.error(err));
-        }
-    
+
+    const fetchMovies = async (inputValue) => {
 
 
-    console.log(users)
-    const [filteredUsers, setFilteredUsers] = useState(users);
 
-    const handleFilter = (event) => {
-        setInputValue(event.target.value)
-        const value = event.target.value.toLowerCase();
-        const filtered = users.filter(user => user.title.toLowerCase().includes(value));
-        setFilteredUsers(filtered);
-    };
+        fetch(`https://api.themoviedb.org/3/search/movie?query=${inputValue}&api_key=737b9c89bea1ebcd53b5cd2a12ee5fe7`, options)
+            .then(response => response.json())
+            .then(response => {
+                setMovies(response.results)
 
-    if (filteredUsers.length > 20) setFilteredUsers(filteredUsers.slice(0, 20))
+            })
+            .catch(err => console.error(err));
+
+    }
+
+    useEffect(
+        () => {
+            fetchMovies(debouncedValue)
+        }, [debouncedValue]
+    )
+
+    if (movies.length > 20) setMovies(movies.slice(0, 20))
 
     return (
-        <div className={search ? 'searchInput no-active' : 'searchInput'}>
+        <div className='searchInput'>
             <input
                 type='text'
                 placeholder='Batman, Joker etc'
                 className='input'
-                onChange={handleFilter}
-
+                onChange={changeValue}
             />
-            {inputValue !== '' ?
-                <> <div className='seact-title_block'>
+            {inputValue !== "" ?
+                <> <div className='search-title_block'>
                     <h4 className='search-title'>{`Results for "${inputValue}"`}</h4>
                 </div>
 
                     <div className='searchResults'>
-                        {filteredUsers.map(user => {
+                        {movies.map(user => {
                             return <FilmCard
                                 background={user.poster_path}
                                 title={user.title}
                                 vote={user.vote_average}
                                 year={user.release_date}
+                                id={user.id}
                             />
                         })}
                     </div>
@@ -72,4 +77,5 @@ const SearchInput = ({ search }) => {
     )
 };
 
-export default SearchInput;
+
+export default SearchInput

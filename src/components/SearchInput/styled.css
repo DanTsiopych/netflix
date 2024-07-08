@@ -25,15 +25,15 @@
     display: grid;
     grid-template: auto / repeat(5, minmax(150px, 224px));
     column-gap: 20px;
-    margin-top: 30px;
+    margin-top: 15px;
 }
 
-.seact-title_block {
+.search-title_block {
     width: 100%;
     border-bottom: 1px solid gray;
     font-size: 22px;
     font-weight: 400;
-    margin: 10px 0px;
+    margin: 10px 0px 0px 0px;
     padding: 10px 0;
 }
 

@@ -1,23 +1,20 @@
 import React from 'react';
 import './styled.css';
 import Nav from '../Nav';
-
 import Glass from '../../imgs/icon-magnifying-glass.svg';
+import { Link } from 'react-router-dom';
+
+const Header = () => {
 
 
-const Header = ({setSearch}) => {
-    
-    
     return (
-            <header className='header'>
-                <a className='logo' href='#'
-                    onClick={() => setSearch(true)}
-                >NETFLIX</a>
-                <Nav />
-                <img className='glass-icon' src={Glass} 
-                    onClick={() => setSearch(false)}
-                />
-            </header>
+        <header className='header'>
+            <Link className='logo' to='/'> NETFLIX </Link>
+            <Nav />
+            <Link to='/search'>
+                <img className='glass-icon' src={Glass} />
+            </Link>
+        </header>
     )
 };
 

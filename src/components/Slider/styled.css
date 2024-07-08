@@ -4,8 +4,10 @@
 }
 
 .poster  {
+    max-width: 100%;
     z-index: -1;
     height: 682px;
+    object-fit: cover;
 }
 
 .poster-content {
@@ -111,7 +113,7 @@
     }
 }
 
-@media (max-width: 425px) {
+@media (max-width: 435px) {
     .poster-content {
         justify-content: center;
     }
